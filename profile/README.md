@@ -1,6 +1,6 @@
 # Portfolio Platform
 
-Full-stack microservices architecture showcasing **Go, .NET, Vue.js, AWS, and modern DevOps practices**. Designed to demonstrate production-ready patterns, secure architecture, and comprehensive testing.
+Full-stack microservices architecture showcasing **Go, Vue.js, AWS, and modern DevOps practices**. Designed to demonstrate production-ready patterns, secure architecture, and comprehensive testing.
 
 ---
 
