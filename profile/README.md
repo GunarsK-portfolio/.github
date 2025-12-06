@@ -31,7 +31,7 @@ Full-stack microservices architecture showcasing **Go, Vue.js, AWS, and modern D
 
 ## Highlights
 
-- ✅ 583+ unit tests, 197+ end-to-end test steps  
+- ✅ 600+ unit tests, 200+ end-to-end test steps  
 - 🔒 RBAC with granular scopes per resource  
 - ☁️ AWS: App Runner, Aurora, CloudFront, WAF  
 - 🚀 CI/CD: GitHub Actions with multi-layer security scanning and OIDC deployments  
