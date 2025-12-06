@@ -48,7 +48,7 @@ flowchart TD
         AW["Admin Panel 🖥️ Vue"]
     end
 
-    subgraph Backend["Go & .NET Microservices"]
+    subgraph Backend["Go Microservices"]
         AUTH["Auth Service 🟢 Go"]
         API["Public API 🟢 Go"]
         ADM["Admin API 🟢 Go"]
