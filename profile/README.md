@@ -1,10 +1,15 @@
 # Portfolio Platform
 
-Microservices architecture demonstrating Go, Vue, AWS, and DevOps practices.
+Full-stack microservices architecture showcasing **Go, .NET, Vue.js, AWS, and modern DevOps practices**. Designed to demonstrate production-ready patterns, secure architecture, and comprehensive testing.
+
+---
 
 ## Demo
 
-🔑 [admin.gunarsk.com](https://admin.gunarsk.com) — `demo` / `demo123` (read-only)
+🌐 [Portfolio Website](https://gunarsk.com)  
+🔑 [Portfolio Admin Website](https://admin.gunarsk.com) — read-only demo (`demo` / `demo123`)
+
+---
 
 ## Services
 
@@ -22,11 +27,59 @@ Microservices architecture demonstrating Go, Vue, AWS, and DevOps practices.
 | [infrastructure](https://github.com/GunarsK-portfolio/infrastructure) | Terraform | AWS + Docker Compose |
 | [e2e-tests](https://github.com/GunarsK-portfolio/e2e-tests) | Playwright | End-to-end tests |
 
+---
+
 ## Highlights
 
-- 583+ unit tests, 197+ E2E steps
-- RBAC with granular scopes per resource
-- AWS: App Runner, Aurora, CloudFront, WAF
-- CI/CD: GitHub Actions with security scanning
+- ✅ 583+ unit tests, 197+ end-to-end test steps  
+- 🔒 RBAC with granular scopes per resource  
+- ☁️ AWS: App Runner, Aurora, CloudFront, WAF  
+- 🚀 CI/CD: GitHub Actions with multi-layer security scanning and OIDC deployments  
 
-🌐 [gunarsk.com](https://gunarsk.com)
+---
+
+## Architecture Overview
+
+```mermaid
+flowchart TD
+
+    subgraph Frontend["Vue 3 Frontend"]
+        PW["Public Site 🖥️ Vue"]
+        AW["Admin Panel 🖥️ Vue"]
+    end
+
+    subgraph Backend["Go & .NET Microservices"]
+        AUTH["Auth Service 🟢 Go"]
+        API["Public API 🟢 Go"]
+        ADM["Admin API 🟢 Go"]
+        FILES["Files API 🟢 Go"]
+        MSG["Messaging API 🟢 Go"]
+        WORKER["Messaging Worker 🟢 Go"]
+    end
+
+    subgraph Data["AWS Data Layer"]
+        CACHE["Redis 🟦"]
+        DB["PostgreSQL 🐘"]
+        S3["S3 ☁️"]
+        MQ["RabbitMQ 🐰"]
+        SES["SES ✉️"]
+    end
+
+    %% Connections
+    PW --> API
+    PW --> MSG
+    PW --> FILES
+    AW --> AUTH
+    AW --> FILES
+    AW --> ADM
+    AW --> MSG
+    API --> DB
+    ADM --> DB
+    AUTH --> DB
+    MSG --> DB
+    MSG --> MQ
+    WORKER --> MQ
+    WORKER --> DB
+    WORKER --> SES
+    AUTH --> CACHE
+    FILES --> S3
